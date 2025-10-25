@@ -1,8 +1,12 @@
 AssignementLimitWorkers
 
-In this exercise, I modified the line of code that creates the counting semaphore :
+In this exercise, I modified the line of code that creates the counting semaphore, i add 1 more worker and 1 remove 1 token :
 
 SemaphoreHandle_t sem = xSemaphoreCreateCounting(2, 2);
+	worker1.setSemaphore(sem);
+	worker2.setSemaphore(sem);
+	worker3.setSemaphore(sem);
+	worker4.setSemaphore(sem);
 
 This change was made to test the case where we have four BlinkWorkers but only two tokens available.
 As a result, only two BlinkWorker tasks can run at the same time, while the other two must wait until a token is released.
