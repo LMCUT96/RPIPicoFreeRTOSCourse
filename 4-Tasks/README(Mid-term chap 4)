@@ -1,0 +1,38 @@
+1. MultiBlink
+
+In the main.cpp code file, I added several lines of code:
+- I defined 3 new LEDs (LEDs 5 to 7) to make all the LEDs blink.
+#define LED_PAD					0
+#define LED1_PAD				2
+#define LED2_PAD				3
+#define LED3_PAD				4
+#define LED4_PAD				5
+*** 3 lines that i add ***
+#define LED5_PAD				6
+#define LED6_PAD				7
+#define LED7_PAD				8
+
+- In the main_Task function, I added the 6 lines of code for the new LEDs.
+void mainTask(void *params){
+	BlinkAgent blink(LED_PAD);
+	BlinkAgent worker1(LED1_PAD);
+	BlinkAgent worker2(LED2_PAD);
+	BlinkAgent worker3(LED3_PAD);
+	BlinkAgent worker4(LED4_PAD);
+  *** 3 lines that i add ***
+	BlinkAgent worker5(LED5_PAD);
+	BlinkAgent worker6(LED6_PAD);
+	BlinkAgent worker7(LED7_PAD);
+---------------
+blink.start("Blink", TASK_PRIORITY);
+	worker1.start("Worker 1", TASK_PRIORITY);
+	worker2.start("Worker 2", TASK_PRIORITY + 1);
+	worker3.start("Worker 3", TASK_PRIORITY + 2);
+	worker4.start("Worker 4", TASK_PRIORITY + 3);
+*** 3 lines that i add ***
+	worker5.start("Worker 5", TASK_PRIORITY + 4);
+	worker6.start("Worker 6", TASK_PRIORITY + 5);
+	worker7.start("Worker 7", TASK_PRIORITY + 6);
+
+For this exercice, I created 8 tasks, each controlling one LED with different priorities and processing loads.
+The RP2040 was able to handle all 8 tasks without any problem, showing that the system still had enough memory and CPU resources available.
