@@ -1,6 +1,6 @@
 AssignementLimitWorkers
 
-In this exercise, I modified the line of code that creates the counting semaphore, i add 1 more worker and 1 remove 1 token :
+In this exercise, I modified the line of code that creates the counting semaphore and 1 remove 1 token :
 
 SemaphoreHandle_t sem = xSemaphoreCreateCounting(2, 2);
 	worker1.setSemaphore(sem);
