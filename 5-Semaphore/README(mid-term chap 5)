@@ -1,0 +1,9 @@
+AssignementLimitWorkers
+
+In this exercise, I modified the line of code that creates the counting semaphore :
+
+SemaphoreHandle_t sem = xSemaphoreCreateCounting(2, 2);
+
+This change was made to test the case where we have four BlinkWorkers but only two tokens available.
+As a result, only two BlinkWorker tasks can run at the same time, while the other two must wait until a token is released.
+This demonstrates how the counting semaphore effectively limits concurrent task execution and helps control access to shared resources in FreeRTOS.
