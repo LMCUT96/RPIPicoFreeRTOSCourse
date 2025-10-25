@@ -90,7 +90,7 @@ void mainTask(void *params){
 	BlinkWorker worker3(LED3_PAD);
 	BlinkWorker worker4(LED4_PAD);
 
-	SemaphoreHandle_t sem = xSemaphoreCreateCounting(3, 2);
+	SemaphoreHandle_t sem = xSemaphoreCreateCounting(2, 2);
 	worker1.setSemaphore(sem);
 	worker2.setSemaphore(sem);
 	worker3.setSemaphore(sem);
@@ -140,6 +140,7 @@ int main( void )
     //Start tasks and scheduler
     const char *rtos_name = "FreeRTOS";
     printf("Starting %s on core 0:\n", rtos_name);
+	printf("YABA-LEY Leyson ID : F14128811");
     vLaunch();
 
 
