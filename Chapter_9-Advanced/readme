@@ -1,1 +1,8 @@
-
+I download the RPIPicoFreeRTOSCourse-main.zip then i unzip it after that i import the folder 9-Advanced to VSCode and i just put my name and ID
+while (true) { // Loop forever
+		runTimeStats();
+		vTaskDelay(5000);
+		printf("YABA-LEY Leyson F14128811");
+	}
+}
+Then i compile the file.
