@@ -1,17 +1,49 @@
-On the main.cpp file i change the #define LED_PAD	0 to #define LED_PAD25 and i add my name and ID and i change the value of sleep_ms
-int main( void )
-{
-	//Setup serial over USB and give a few seconds to settle before we start
-    stdio_init_all();
-    sleep_ms(10000);
-    printf("GO\n");
+On the counteragent.cpp file i add more Leds :
 
-    //Start tasks and scheduler
-    const char *rtos_name = "FreeRTOS";
-    printf("Starting %s on core 0:\n", rtos_name);
-	  printf("YABA-LEY Leyson F14128811");
-    vLaunch();
+/***
+ * Contructor
+ * @param gp1 GPIO PAD for 1st LED - units
+ * @param gp2 GPIO PAD for 1st LED - 2
+ * @param gp3 GPIO PAD for 1st LED - 4
+ * @param gp4 GPIO PAD for 1st LED - 8
+ * @param gp5 GPIO PAD for 1st LED - 16
+ * @param gp6 GPIO PAD for 1st LED - 32
+ * @param gp7 GPIO PAD for 1st LED - 64
+ * @param gp8 GPIO PAD for 1st LED - 128
+ */
+CounterAgent::CounterAgent(uint8_t gp1, uint8_t gp2, uint8_t gp3, uint8_t gp4,uint8_t gp5,uint8_t gp6,uint8_t gp7,uint8_t gp8) {
 
+	pLedPads[0] = gp1;
+	pLedPads[1] = gp2;
+	pLedPads[2] = gp3;
+	pLedPads[3] = gp4;
+	pLedPads[4] = gp5;
+	pLedPads[5] = gp6;
+	pLedPads[6] = gp7;
+	pLedPads[7] = gp8;
 
-    return 0;
-}
+On the counteragent.h i change the #define COUNT_LEDS 4 to #define COUNT_LEDS 7 and this change :
+/***
+ 	* Contructor
+ 	* @param gp1 GPIO PAD for 1st LED - units
+ 	* @param gp2 GPIO PAD for 1st LED - 2
+ 	* @param gp3 GPIO PAD for 1st LED - 4
+ 	* @param gp4 GPIO PAD for 1st LED - 8
+ 	* @param gp5 GPIO PAD for 1st LED - 16
+ 	* @param gp6 GPIO PAD for 1st LED - 32
+ 	* @param gp7 GPIO PAD for 1st LED - 64
+ 	* @param gp8 GPIO PAD for 1st LED - 128
+ 	*/
+	CounterAgent(uint8_t gp1=0, uint8_t gp2=0, uint8_t gp3=0, uint8_t gp4=0,uint8_t gp5=0,uint8_t gp6=0,uint8_t gp7=0,uint8_t gp8=0);
+On the main.cpp i add more led pad to use :
+//LED PAD to use
+#define LED_PAD				25
+#define LED1_PAD			2
+#define LED2_PAD			3
+#define LED3_PAD			4
+#define LED4_PAD			5
+#define LED5_PAD			6
+#define LED6_PAD			7
+#define LED7_PAD			8
+and i update this line 
+CounterAgent counter(LED1_PAD, LED2_PAD, LED3_PAD, LED4_PAD,LED5_PAD,LED6_PAD,LED7_PAD);
