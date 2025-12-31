@@ -1,0 +1,17 @@
+On the main.cpp file i change the #define LED_PAD	0 to #define LED_PAD25 and i add my name and ID and i change the value of sleep_ms
+int main( void )
+{
+	//Setup serial over USB and give a few seconds to settle before we start
+    stdio_init_all();
+    sleep_ms(10000);
+    printf("GO\n");
+
+    //Start tasks and scheduler
+    const char *rtos_name = "FreeRTOS";
+    printf("Starting %s on core 0:\n", rtos_name);
+	  printf("YABA-LEY Leyson F14128811");
+    vLaunch();
+
+
+    return 0;
+}
